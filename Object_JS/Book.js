@@ -1,5 +1,5 @@
 
-
+    // constructor function for the Book object
     function Book(title, author, pages, read_status) {
         this.title = title;
         this.author = author;
@@ -12,7 +12,7 @@
             }
     }
 
-
+    // creating an instance of the Book object
     const thehabbit =  new Book( 
         "The Hobbit",
         "J.R.R. Tolkien",
@@ -22,7 +22,8 @@
     )
 
 
-
+    // calling the info method of the Book object
     console.log(thehabbit.info());
-
+    // checking the prototype of the Book object
+    console.log(Object.getPrototypeOf(thehabbit));      
     Object.getPrototypeOf();
