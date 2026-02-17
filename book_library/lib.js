@@ -31,18 +31,32 @@ addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 214, false);
 
 
 
-
-
 function toggleButton(id)
 {
 
     for (const book of BookLibrary) {
         if(book.id == id){
             book.read_status = !book.read_status;
+            break;
         }
     } 
     renderLibrary();
 };
+
+
+function RemoveBook(id)
+{
+    for(const book of BookLibrary)
+    {
+        const index = BookLibrary.findIndex((book) => book.id === id);
+        if(index != -1)
+        {
+            BookLibrary.splice(index, 1);
+            break;
+        }
+    }
+    renderLibrary();
+}
 
 
 // Function to render the library on the webpage
@@ -89,13 +103,42 @@ function renderLibrary() {
         bookCardDiv.appendChild(Button);
         
 
+
+        // remove button 
+        const RemoveButton =  document.createElement("button");
+        RemoveButton.textContent = "Remove Book";
+        RemoveButton.dataset.id = book.id;
+        RemoveButton.addEventListener("click", () => RemoveBook(book.id));
+        bookCardDiv.appendChild(RemoveButton);
+
         libDiv.appendChild(bookCardDiv);
     }
-    
 };  
 
+
+function displayNewBookBtn()
+{
+    const form = document.getElementById("BookForm");
+    form.style.display = "block";
+}
+function addBookForm()
+{
+    const newButton = document.getElementById("newBookBtn");
+    newButton.addEventListener("click", () => displayNewBookBtn());
+}
+
+
+
+function preventFormSubmit()
+{
+    const preventSubmitBtn = document.getElementById('submitBtn');
+    preventSubmitBtn.addEventListener("click", function(event) {
+        event.preventdefault();
+    } )
+}
 // Initial render of the library    
 renderLibrary();
+addBookForm();
 
 // Add event listener to the button to toggle read status
 

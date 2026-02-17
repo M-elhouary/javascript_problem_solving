@@ -1,44 +1,126 @@
-📚 Library Project: Management System
-A simple web application to manage a personal reading list. This project focuses on JavaScript objects, constructors, prototypes, and DOM manipulation using dataset and EventTarget principles.
+# 📚 Book Library — JavaScript Project
 
-🚀 Objectives
-Implement Constructor Functions and Prototypes.
+> A simple web application to manage a personal reading list, built with **vanilla JavaScript**, focusing on OOP concepts, DOM manipulation, and clean data/UI separation.
 
-Manage a collection of objects using an internal Array.
+---
 
-Sync the Data Logic (JavaScript) with the UI Logic (DOM).
+## 📖 Table of Contents
 
-Handle user input via Forms and <dialog> modals.
+- [About](#about)
+- [Demo](#demo)
+- [Project Structure](#project-structure)
+- [Features](#features)
+- [Concepts Covered](#concepts-covered)
+- [Getting Started](#getting-started)
+- [Roadmap](#roadmap)
 
-🛠 Features to Implement
-1. The Data Structure
-All books will be stored in a central myLibrary array. Each book is an object created via a constructor.
+---
 
-Constructor: Defines properties like title, author, pages, readStatus, and a unique id.
+## About
 
-Unique IDs: Use crypto.randomUUID() for each book to ensure stable identification when deleting or updating items.
+This project is a hands-on exercise in core JavaScript fundamentals. The main application (`book_library/`) lets users view, add, and manage a collection of books — all handled client-side with no frameworks or back-end.
 
-Factory Function: A helper function addBookToLibrary() to handle the logic of creating the object and pushing it to the array.
+A secondary folder (`Object_JS/`) contains early experiments with constructor functions and prototypes that informed the final design.
 
-2. The Display Logic
-Create a function that renders the library to the page.
+---
 
-Separation of Concerns: Keep the "Data" (the array) and the "View" (the HTML cards) separate.
+## Demo
 
-Dynamic Rendering: The function should clear the current display and re-render the list whenever the library changes.
+Open `book_library/index.html` in any modern browser to see the app in action.
 
-3. User Interaction & Forms
-New Book Button: Triggers a <dialog> or modal containing a form.
+| Feature | Preview |
+|---|---|
+| Book cards rendered dynamically | Each card shows **title, author, pages,** and **read status** |
+| Toggle read status | One-click button flips between *Read* / *Not Read* |
 
-Form Submission: Use event.preventDefault() to stop the browser from trying to send data to a server, allowing JavaScript to handle the input locally.
+---
 
-4. Interactive Controls (The "Deep" Stuff)
-Each book card in the UI must have:
+## Project Structure
 
-Remove Button: Deletes the book from the array and the DOM.
+```
+JS/
+├── README.md
+├── book_library/          # ← Main application
+│   ├── index.html         # Entry point
+│   ├── lib.js             # App logic (Book class, render, toggle)
+│   └── style.css          # Styles (WIP)
+└── Object_JS/             # ← OOP sandbox / experiments
+    ├── index.html
+    ├── Book.js            # Constructor & prototype exploration
+    └── style.css
+```
 
-Toggle Read Status: A button to switch between "Read" and "Not Read."
+---
 
-Implementation: This should be a function added to the Book.prototype so all instances can access it.
+## Features
 
-Data Attributes: Use data-id (the dataset property) on the HTML elements to link the visual "Card" to the specific JavaScript object in your array.
+### ✅ Implemented
+
+| # | Feature | Details |
+|---|---------|---------|
+| 1 | **Book class** | ES6 `class` with `title`, `author`, `pages`, `read_status`, and a unique `id` via `crypto.randomUUID()` |
+| 2 | **Central library array** | All books stored in a single `BookLibrary[]` array |
+| 3 | **Factory function** | `addBookToLibrary()` creates a `Book` instance and pushes it to the array |
+| 4 | **Dynamic rendering** | `renderLibrary()` clears and re-builds the DOM from the array on every change |
+| 5 | **Toggle read status** | Button on each card flips `read_status` using `data-id` to link DOM ↔ data |
+| 6 | **Sample data** | 5 pre-loaded classic books for instant demo |
+
+### 🔲 To Do
+
+- [ ] **"New Book" form** — `<dialog>` modal with form inputs & `event.preventDefault()`
+- [ ] **Remove book** — Delete button on each card (remove from array + DOM)
+- [ ] **Persistent storage** — Save library to `localStorage`
+- [ ] **Styling** — Design book cards with CSS Grid / Flexbox
+- [ ] **Input validation** — Prevent empty or duplicate entries
+
+---
+
+## Concepts Covered
+
+| Concept | Where it's used |
+|---------|-----------------|
+| **ES6 Classes** | `Book` class in `lib.js` |
+| **Constructor Functions & Prototypes** | Explored in `Object_JS/Book.js` |
+| **`crypto.randomUUID()`** | Unique ID generation for each book |
+| **DOM Manipulation** | `createElement`, `textContent`, `appendChild` in `renderLibrary()` |
+| **`dataset` / `data-*` attributes** | Linking each card's toggle button to its book object |
+| **Event Listeners** | `click` events on dynamically created buttons |
+| **Data ↔ UI Separation** | Array holds truth; DOM is rebuilt from array |
+
+---
+
+## Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mel-houa/my_project.git
+   cd my_project/JS
+   ```
+
+2. **Open the app**
+   ```bash
+   # Any of these will work:
+   open book_library/index.html        # macOS
+   xdg-open book_library/index.html    # Linux
+   start book_library/index.html       # Windows
+   ```
+   Or simply drag `book_library/index.html` into your browser.
+
+3. **No build step required** — it's pure HTML, CSS, and JavaScript.
+
+---
+
+## Roadmap
+
+```
+Phase 1  ✅  Core data model + rendering
+Phase 2  🔲  Add / Remove books via UI
+Phase 3  🔲  localStorage persistence
+Phase 4  🔲  Polish UI & responsive design
+```
+
+---
+
+<p align="center">
+  Made with ☕ and vanilla JS
+</p>

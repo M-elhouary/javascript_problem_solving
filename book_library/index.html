@@ -12,8 +12,39 @@
 
 <body>
     <h1>Book Library</h1>
+    <button id="newBookBtn">Add new book</button>
+    
+    <form id = "BookForm" style="display: none;"> 
+    <div>
+        <label for = "title"> Title</label>
+        <input type ="text" name="title"> 
+           
+    </div>
 
-    <div id="library">hello</div>
+    <div>
+        <lebel for ="author"> Author</label>
+        <input type ="text" name = "author"> 
+         
+    </div>
+
+    <div>
+        <lebel for ="Npages" > Nmber of pages </label>
+        <input type ="number" name = "pages"> 
+    </div>
+
+    <div>
+        <label for ="read">read</label>           
+        <input type ="checkbox" name = "read"> 
+    </div>
+
+    <div>
+        <input type ="submit" id ="submitBtn"> 
+    </div>
+    </form>
+
+
+
+    <div id="library">library</div>
     <script src="lib.js"></script>
 </body>
 
