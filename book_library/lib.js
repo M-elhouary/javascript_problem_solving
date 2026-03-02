@@ -93,7 +93,7 @@ function renderLibrary() {
 
 
         // Adding a button to toggle read status
-        const Button = document.createElement("button");
+        const Button = document.createElement("button");    
         Button.textContent = "Toggle Read Status";
         Button.dataset.id = book.id;
         Button.addEventListener("click", () => book.toggleButton(book.id));
